@@ -1,22 +1,26 @@
-#include "all.h"
-#include "allheads.h"
-#include "arithmetic.h"
-#include "jumping.h"
-#include "comparing.h"
-#include "move.h"
-int main()
+#include "master.h"
+#include "global.h"
+#include "tools.h"
+
+
+int main(int argc, char *argv[])
 {
-	int r=0;
-	opcode_assign();											
-	
-		bool flag1=false;
-		flag1=starting();
-		if(flag1!=false)
+	initilize_map_opcode();												// MAP OPCODE INITILIZITATION
+	if(argc==1) 														// IF NO ARGUMENT IS PASSED
+	{
+		bool termination_flag=false;
+		termination_flag=input();
+		if(!termination_flag)
 		{
-			process();
+			index_pc=0;
+			execution();
 		}
 		else
 		{
-			cout<<"ERROR"<<endl;								
+			cout<<"*** ERROR: Invalid Input ***"<<endl;								// BREAK THE CODE as INVALID ENTRIY
 		}
+	}
+	
+	cout<<"\t*** THE END ***"<<endl;
+	return 0;
 }

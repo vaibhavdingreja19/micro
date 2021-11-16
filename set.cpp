@@ -1,27 +1,28 @@
-#include"all.h"
-#include"allheads.h"
-bool set(string temp)
+#include "master.h"
+#include "global.h"
+#include "tools.h"
+
+bool set1(string temp_string)							
 {
 	vector<string> parts;
-	parts=seperator(temp);
-	if(parts.size()==3)
+	parts=seperator(temp_string);
+	int size=parts.size();
+	if(size==3)
 	{
-		int q=parts[1].length();
-		int r=parts[2].length();
-		if(q==4 && r==2)
+		int len=parts[1].length();
+		int len2=parts[2].length();
+		if (len == 4 && len2 == 2)
 		{
-			q=h2d(parts[1]);
-			r=h2d(parts[2]);
-			store[q]=r;
+			len=hex2dec(parts[1]);
+			len2=hex2dec(parts[2]);
+			if(len==-1 || len2==-1)
+				return true;
+			store[len]=len2;
 			return false;
 		}
-		else 
-		{
+		else
 			return true;
-		}
 	}
 	else
-	{
 		return true;
-	}	
 }

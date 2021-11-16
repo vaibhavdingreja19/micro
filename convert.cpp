@@ -1,8 +1,9 @@
-#include "all.h"
-#include "allheads.h"
-int h2d(string a)
+#include "master.h"
+#include "global.h"
+
+int hex2dec(string a)
 {
-	int len=strlen(a);
+	int len=a.length();
 	int base=1,dec=0;
 		for (int i=len-1;i>=0;i--)
 		{
@@ -19,7 +20,8 @@ int h2d(string a)
 		}
 	return dec;
 }
-string d2h(int a,int n)
+
+string dec2hex(int a,int n)
 {
 	string str=" ";
 	int i=0;
@@ -47,23 +49,23 @@ else
 	a=a/16;
 	}
 }
-		int i=str.length();
+		 i=str.length();
 		for(int j=0;j<i/2;j++)
 		{
 			char temp1=str[j];
 			str[j]=str[i-j-1];
 			str[i-j-1]=temp1;
-}
-		if(size == 2)
+		}
+		if(n == 2)
 		{
 			if( i == 2 )
 				return str;
 			else
 			{
 				str="0"+str;
-            }
+           		 }
 		}
-		else if( size == 4 )
+		else if( n == 4 )
 		{
 			if( i == 4 )
 				return str;
@@ -80,6 +82,6 @@ else
 				str="000"+str;
 			}
 		}
-	}
+	
 	return str;
 }
